@@ -66,13 +66,11 @@ class App extends Component {
 
 		if (this.state.showPersons) {
 			persons = (
-				<div>
-					<Persons
-						persons={this.state.persons}
-						clicked={this.deletePersonHandler}
-						changed={this.nameChangedHandler}
-					/>
-				</div>
+				<Persons
+					persons={this.state.persons}
+					clicked={this.deletePersonHandler}
+					changed={this.nameChangedHandler}
+				/>
 			);
 
 			//btnClass = classes.Red;
@@ -81,6 +79,7 @@ class App extends Component {
 		return (
 			<div className={classes.App}>
 				<Cockpit
+					title={this.props.appTitle}
 					showPersons={this.state.showPersons}
 					persons={this.state.persons}
 					clicked={this.togglePersonsHandler}
