@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import Auxillary from '../../../hoc/Auxillary';
-/*import classes from './Person.css'; */
+import withClass from '../../../hoc/withClass';
+import classes from './Person.css';
 
 /*const person = props => {
   return (
@@ -31,4 +32,4 @@ class Person extends Component {
 	}
 }
 
-export default Person;
+export default withClass(Person, classes.Person);
