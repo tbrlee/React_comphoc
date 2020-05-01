@@ -49,7 +49,7 @@ class App extends Component {
 		//Setstate with the JS bject via changing the counter in synchronous manner !!Not always reliable  for imeediate execution especially the setState other place.
 		//this.setState({ persons: persons, changeCounter: this.state.changeCounter + 1 });
 
-		//setstate using/passing function involving prevstate if the current state depends on older state
+		//setstate using/passing function involving prevstate if the current state depends on older state !!Very good way to code in this manner
 		this.setState((prevState, props) => {
 			return {
 				persons: persons,
