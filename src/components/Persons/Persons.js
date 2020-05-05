@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import Person from './Person/Person';
+//import AuthContext from '../../context/auth-context';
 
 //Concised implied "return" function
 /*const persons = (props) =>
@@ -72,7 +74,9 @@ class Persons extends Component {
 					age={person.age}
 					key={person.id}
 					changed={(event) => this.props.changed(event, person.id)}
-					isAuth={this.props.isAuthenticated}
+
+					//isAuth is removed for the context to propagate to Person component
+					//isAuth={this.props.isAuthenticated}
 				/>
 			);
 		});

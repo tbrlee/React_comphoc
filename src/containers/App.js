@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import withClass from '../hoc/withClass';
+import withClass from '../hoc/WithClass';
 import Auxillary from '../hoc/Auxillary';
+import AuthContext from '../context/auth-context';
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -96,17 +98,23 @@ class App extends Component {
 					}}>
 					Remove Cockpit
 				</button>
-				{this.state.showCockpit ? (
-					<Cockpit
-						title={this.props.appTitle}
-						showPersons={this.state.showPersons}
-						//persons={this.state.persons}
-						personsLength={this.state.persons.length}
-						clicked={this.togglePersonsHandler}
-						login={this.loginHandler}
-					/>
-				) : null}
-				{persons}
+				<AuthContext.Provider
+					value={{
+						authenticated: this.state.authenticated,
+						login: this.loginHandler
+					}}>
+					{this.state.showCockpit ? (
+						<Cockpit
+							title={this.props.appTitle}
+							showPersons={this.state.showPersons}
+							//persons={this.state.persons}
+							personsLength={this.state.persons.length}
+							clicked={this.togglePersonsHandler}
+							//login={this.loginHandler}
+						/>
+					) : null}
+					{persons}
+				</AuthContext.Provider>
 			</Auxillary>
 		);
 		// return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
